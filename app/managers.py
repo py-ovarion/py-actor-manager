@@ -11,9 +11,9 @@ class ActorManager:
         self.table_name = table_name
 
     def all(self) -> list[Actor]:
-        cursor = self.db.execute(f"SELECT * FROM {self.table_name}")
-        if cursor.rowcount == 0:
-            return []
+        cursor = self.db.execute(f"SELECT id, first_name, last_name "
+                                 f"FROM {self.table_name}")
+
         return [Actor(*row) for row in cursor]
 
     def create(self,
